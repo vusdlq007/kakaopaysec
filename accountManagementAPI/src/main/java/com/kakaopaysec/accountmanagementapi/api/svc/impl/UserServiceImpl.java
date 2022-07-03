@@ -34,6 +34,10 @@ public class UserServiceImpl implements UserService {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
 
+    public UserServiceImpl(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
+
     /**
      * 사용자 정보 추가.
      *

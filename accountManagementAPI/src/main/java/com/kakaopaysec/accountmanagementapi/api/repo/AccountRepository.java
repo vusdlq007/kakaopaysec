@@ -13,7 +13,4 @@ public interface AccountRepository extends JpaRepository<AccountVo, String> {   
 
     public Optional<AccountVo> findById(String id);
 
-//    public Optional<AccountVo> findByIdAndUserId(String id, String userId);
-
-
 }

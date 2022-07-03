@@ -38,7 +38,6 @@ public class UserRestController {
                                       @ApiParam(
                                               name = "사용자 정보.",
                                               example = "{\n" +
-                                                      "    \"accessType\":\"create\",\n" +
                                                       "    \"userName\":\"김윤권\",\n" +
                                                       "    \"age\":30\n" +
                                                       "}") UserRequestDTO requestDTO){

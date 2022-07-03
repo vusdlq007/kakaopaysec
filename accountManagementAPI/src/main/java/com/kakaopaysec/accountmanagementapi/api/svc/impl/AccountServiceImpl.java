@@ -3,6 +3,7 @@ package com.kakaopaysec.accountmanagementapi.api.svc.impl;
 import com.kakaopaysec.accountmanagementapi.api.dto.AccountRequestDTO;
 import com.kakaopaysec.accountmanagementapi.api.dto.AccountResponseDTO;
 import com.kakaopaysec.accountmanagementapi.api.repo.AccountRepository;
+import com.kakaopaysec.accountmanagementapi.api.repo.UserRepository;
 import com.kakaopaysec.accountmanagementapi.api.svc.AccountService;
 import com.kakaopaysec.accountmanagementapi.api.vo.AccountVo;
 import com.kakaopaysec.accountmanagementapi.cmm.constant.ResponseCode;
@@ -24,6 +25,9 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     AccountRepository accountRepository;
 
+    public AccountServiceImpl(AccountRepository accountRepository){
+        this.accountRepository = accountRepository;
+    }
 
     /**
      * 특정 사용자의 계좌를 등록한다.

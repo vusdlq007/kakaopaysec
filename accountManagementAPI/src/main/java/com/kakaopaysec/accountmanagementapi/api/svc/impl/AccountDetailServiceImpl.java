@@ -3,6 +3,7 @@ package com.kakaopaysec.accountmanagementapi.api.svc.impl;
 import com.kakaopaysec.accountmanagementapi.api.dto.*;
 
 import com.kakaopaysec.accountmanagementapi.api.repo.AccountDetailsRepository;
+import com.kakaopaysec.accountmanagementapi.api.repo.AccountRepository;
 import com.kakaopaysec.accountmanagementapi.api.svc.AccountDetailService;
 import com.kakaopaysec.accountmanagementapi.api.vo.AccountDetailVo;
 
@@ -22,7 +23,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -36,6 +36,10 @@ public class AccountDetailServiceImpl implements AccountDetailService {
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
+
+    public AccountDetailServiceImpl(AccountDetailsRepository accountDetailsRepository){
+        this.accountDetailsRepository = accountDetailsRepository;
+    }
 
     /**
      * 계좌 내역을 등록한다.
