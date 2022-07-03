@@ -32,7 +32,12 @@ public class AccountRestController {
             @ApiResponse(code = 500, message = "서버 에러")
     })
     @PostMapping("")
-    public AccountResponseDTO accountRegist(@RequestBody AccountRequestDTO requestDTO){
+    public AccountResponseDTO accountRegist(@RequestBody
+                                            @ApiParam(
+                                                    name = "특정 사용자 ID",
+                                                    example = "{\n" +
+                                                    "    \"userId\": 31\n" +
+                                                    "}") AccountRequestDTO requestDTO){
 
         return accountService.accountRegist(requestDTO);
     }

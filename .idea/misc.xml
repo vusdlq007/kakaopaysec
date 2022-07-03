@@ -3,7 +3,6 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/depositAPI/pom.xml" />
         <option value="$PROJECT_DIR$/accountmanagement/pom.xml" />
         <option value="$PROJECT_DIR$/accountManagementAPI/pom.xml" />
       </list>

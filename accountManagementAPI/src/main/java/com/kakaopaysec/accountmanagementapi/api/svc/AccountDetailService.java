@@ -12,13 +12,13 @@ public interface AccountDetailService {
 
     AccountDetailResponseDTO accountDetailRegist(AccountDetailRequestDTO requestDTO);
 
-    AccountDetailResponseDTO accountDetailSearch(AccountDetailRequestDTO requestDTO, Pageable pageable);
+    AccountDetailResponseDTO accountDetailSearch(Pageable pageable);
 
     AccountDetailResponseDTO agesAvgDeposit();
 
     AccountDetailResponseDTO mostDepositUserOfLange(String startTime, String endTime);
 
-    AccountDetailResponseDTO userDepositInfo(String userId);
+    AccountDetailResponseDTO userDepositInfo(int userId);
 
 
 }

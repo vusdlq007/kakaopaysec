@@ -66,12 +66,12 @@ public class AccountDetailServiceImpl implements AccountDetailService {
     /**
      * 계좌 내역 목록을 페이징 정보에 맞춰 조회한다.
      *
-     * @param requestDTO
+     * @param pageable
      * @return
      */
     @Override
     @Transactional(readOnly = true)
-    public AccountDetailResponseDTO accountDetailSearch(AccountDetailRequestDTO requestDTO, Pageable pageable) {
+    public AccountDetailResponseDTO accountDetailSearch(Pageable pageable) {
 
         PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
 
@@ -91,7 +91,7 @@ public class AccountDetailServiceImpl implements AccountDetailService {
      */
     @Transactional(readOnly = true)
     @Override
-    public AccountDetailResponseDTO userDepositInfo(String userId) {
+    public AccountDetailResponseDTO userDepositInfo(int userId) {
 
         List<UserDepositDTO> userDepositList = null;
         try {

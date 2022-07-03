@@ -106,7 +106,7 @@ public interface AccountDetailsRepository extends JpaRepository<AccountDetailVo,
             "FROM TMP1 " +
             "LEFT JOIN TMP2 " +
             "ON TMP1.ACCOUNT_NUMBER = TMP2.ACCOUNT_NUMBER ")
-    public List<UserDepositDTO> findAllByUserAccountEachDeposit(String userId);
+    public List<UserDepositDTO> findAllByUserAccountEachDeposit(int userId);
 
 
     /**

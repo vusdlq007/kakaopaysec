@@ -31,13 +31,18 @@ public class AccountDetailRestController {
      * @param
      * @return
      */
-    @ApiOperation(value = "계좌 정보 추가 액션", notes = "계좌번호, 입출금여부, 입금액, 입금일을 받아 추가 처리한다.")
+    @ApiOperation(value = "계좌 내역 정보 추가 액션", notes = "계좌번호, 입출금여부, 입금액, 입금일을 받아 추가 처리한다.")
     @ApiResponses({
             @ApiResponse(code = 200, message = "API 정상 응답"),
             @ApiResponse(code = 500, message = "서버 에러")
     })
     @PostMapping("")
-    public AccountDetailResponseDTO accountDetailPush(@RequestBody AccountDetailRequestDTO requestDTO) {
+    public AccountDetailResponseDTO accountDetailPush(@RequestBody
+                                                      @ApiParam(example = "{\n" +
+                                                              "    \"accountNumber\": \"1000-01\",\n" +
+                                                              "    \"isDeposit\" : \"Y\",\n" +
+                                                              "    \"depositAmount\" : 15000\n" +
+                                                              "}") AccountDetailRequestDTO requestDTO) {
 
         return accountDetailService.accountDetailRegist(requestDTO);
     }
@@ -48,15 +53,15 @@ public class AccountDetailRestController {
      * @param
      * @return
      */
-    @ApiOperation(value = "계좌 정보 조회 액션", notes = "계좌번호, 입출금여부, 조회 시작일, 마감일을 받아 범위조회 처리한다.")
+    @ApiOperation(value = "계좌 내역 정보 조회 액션", notes = "계좌번호, 입출금여부, 조회 시작일, 마감일을 받아 범위조회 처리한다.")
     @ApiResponses({
             @ApiResponse(code = 200, message = "API 정상 응답"),
             @ApiResponse(code = 500, message = "서버 에러")
     })
     @GetMapping("")
-    public AccountDetailResponseDTO accountDetailSearch(@RequestBody AccountDetailRequestDTO requestDTO, Pageable pageable) {
+    public AccountDetailResponseDTO accountDetailSearch(@ApiParam(name = "페이징 정보") Pageable pageable) {
 
-        return accountDetailService.accountDetailSearch(requestDTO, pageable);
+        return accountDetailService.accountDetailSearch(pageable);
     }
 
     /**
@@ -71,7 +76,14 @@ public class AccountDetailRestController {
             @ApiResponse(code = 500, message = "서버 에러")
     })
     @GetMapping("/all")
-    public AccountDetailResponseDTO userDepositInfo(@RequestParam String userId) {
+    public AccountDetailResponseDTO userDepositInfo(@RequestParam
+                                                    @ApiParam(
+                                                                name =  "사용자 ID",
+                                                                type = "Integer",
+                                                                value = "1",
+                                                                example = "1",
+                                                                required = true)
+                                                                int userId) {
 
         return accountDetailService.userDepositInfo(userId);
     }
@@ -106,7 +118,21 @@ public class AccountDetailRestController {
             @ApiResponse(code = 500, message = "서버 에러")
     })
     @GetMapping("/rank")
-    public AccountDetailResponseDTO mostDepositUserOfLange(@RequestParam("startTime") String startTime, @RequestParam String endTime) {
+    public AccountDetailResponseDTO mostDepositUserOfLange(@RequestParam("startTime")
+                                                           @ApiParam(
+                                                                       name =  "시작범위",
+                                                                       type = "String(LocalDateTime형식)",
+                                                                       value = "2020-10-25T00:00:00",
+                                                                       example = "2020-10-25T00:00:00",
+                                                                       required = true)
+                                                               String startTime,
+                                                           @ApiParam(
+                                                                   name =  "종료범위",
+                                                                   type = "String(LocalDateTime형식)",
+                                                                   value = "2022-08-26T00:00:00",
+                                                                   example = "2022-08-26T00:00:00",
+                                                                   required = true)
+                                                           @RequestParam String endTime) {
 
         return accountDetailService.mostDepositUserOfLange(startTime, endTime);
     }

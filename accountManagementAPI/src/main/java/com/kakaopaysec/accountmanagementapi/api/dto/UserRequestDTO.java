@@ -8,13 +8,13 @@ import lombok.Data;
 @Data
 public class UserRequestDTO {
 
-    @ApiModelProperty(value = "사용자 ID")
+    @ApiModelProperty(value = "사용자 ID", example = "")
     private Long userId;
 
-    @ApiModelProperty(value = "사용자명", required = true)
+    @ApiModelProperty(value = "사용자명", example = "김윤권", required = true)
     private String userName;
 
-    @ApiModelProperty(value = "나이", required = true)
+    @ApiModelProperty(value = "나이 integer", example = "30", required = true)
     private Integer age;
 
 
