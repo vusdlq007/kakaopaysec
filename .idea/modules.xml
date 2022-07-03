@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/accountManagementAPI/accountManagementAPI.iml" filepath="$PROJECT_DIR$/accountManagementAPI/accountManagementAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/depositAPI/depositAPI.iml" filepath="$PROJECT_DIR$/depositAPI/depositAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/kakaopaysec.iml" filepath="$PROJECT_DIR$/.idea/kakaopaysec.iml" />
+    </modules>
+  </component>
+</project>
