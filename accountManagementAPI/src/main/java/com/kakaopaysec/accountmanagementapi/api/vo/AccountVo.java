@@ -18,7 +18,5 @@ public class AccountVo {
     @Column(name = "ACCOUNT_NUMBER")
     private String accountNumber;
 
-    @Column(name = "CREATED_AT")
-    private LocalDateTime createdAt;
 
 }

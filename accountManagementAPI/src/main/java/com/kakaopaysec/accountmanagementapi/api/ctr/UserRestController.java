@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @CrossOrigin("*")
-@Api(tags = {" 사용자 관리 관련 서비스 컨트롤러"})
+@Api(tags = {" 사용자 관리 서비스 컨트롤러"})
 @SwaggerDefinition(tags = {
         @Tag(name = "사용자 관리 서비스 컨트롤러", description = "사용자 추가, 조회 이용에 필요한 기능 제공")
 })

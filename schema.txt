@@ -30,3 +30,5 @@ create table "T_ACCOUNT_DETAIL"
  primary key (ACCOUNT_NUMBER),
  unique (ACCOUNT_NUMBER)
 );
+
+commit;

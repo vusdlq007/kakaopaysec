@@ -6,26 +6,24 @@ import lombok.Getter;
 
 @AllArgsConstructor
 public enum ResponseCode {
-    NOT_FOUND(404,"COMMON-ERR-404","PAGE NOT FOUND"),
-    NOT_ALLOW(403,"COMMON-ERR-403","NOT ALLOW"),
-    INTER_SERVER_ERROR(500,"COMMON-ERR-500","INTER SERVER ERROR"),
-    SUCCESS(200,"COMMON-SUCC-200","SUCCESS"),
-    POINT_EARN_SUCCESS(200,"포인트 적립에 성공하였습니다.","SUCCESS"),
-    POINT_EARN_FAIL(500,"포인트 적립에 실패하였습니다.","INTER SERVER ERROR"),
-    POINT_SEARCH_SUCCESS(200,"포인트 조회에 성공하였습니다.","SUCCESS"),
-    POINT_SEARCH_FAIL(500,"포인트 조회에 실패하였습니다. 등록된 바코드가 아니거나 포인트적립 정보가 존재하지 않습니다.","INTER SERVER ERROR"),
-    POINT_NO_STORE_FAIL(500,"포인트 조회에 실패하였습니다. 상점 정보가 존재하지 않습니다.","INTER SERVER ERROR"),
-    POINT_NO_MEMBER_FAIL(500,"포인트 조회에 실패하였습니다. 해당 바코드가 존재하지 않습니다.","INTER SERVER ERROR"),
-    LOG_PUSH_SUCCESS(200,"포인트 사용 로그 기록에 성공하였습니다.","SUCCESS"),
-    LOG_PUSH_FAIL(500,"포인트 사용 로그 기록에 실패하였습니다.","INTER SERVER ERROR"),
-    BARCODE_SEARCH_EXIST(500,"해당 바코드는 이미 존재합니다.","INTER SERVER ERROR"),
-    EMAIL_DUPLICATION(400,"MEMBER-ERR-400","EMAIL DUPLICATED");
+    NOT_FOUND("PAGE NOT FOUND",404,"COMMON-ERR-404"),
+    NOT_ALLOW("COMMON-ERR-403",403,"NOT ALLOW"),
+    INTER_SERVER_ERROR("INTER SERVER ERROR",500,"COMMON-ERR-500"),
+    SUCCESS("SUCCESS",200,"COMMON-SUCC-200"),
+    USER_REGIST_SUCCESS("SUCCESS",200,"사용자 생성에 성공하였습니다."),
+    USER_REGIST_FAIL("INTER SERVER ERROR",500,"사용자 생성에 실패하였습니다."),
+    USER_SEARCH_SUCCESS("SUCCESS",200,"사용자 목록 조회에 성공하였습니다."),
+    USER_SEARCH_FAIL("INTER SERVER ERROR",500,"사용자 목록 조회에 실패하였습니다."),
+    ACCOUNT_SEARCH_FAIL("INTER SERVER ERROR",500,"계좌 조회에 실패하였습니다. 계좌 정보가 존재하지 않습니다."),
+    ACCOUNT_DETAIL_SERACH_FAIL("INTER SERVER ERROR",500,"계좌내역 조회에 실패하였습니다. 계좌 내역 정보가 존재하지 않습니다."),
+    ACCOUNT_REGIST_SUCCESS("SUCCESS",200,"계좌 등록에 성공하였습니다."),
+    ACCOUNT_REGIST_FAIL("INTER SERVER ERROR",500,"계좌 등록에 실패하였습니다.");
 
 
     @Getter
-    private int status;
+    private String status;
     @Getter
-    private String errorCode;
+    private int errorCode;
     @Getter
     private String message;
 
