@@ -7,26 +7,21 @@ import lombok.Data;
 @Data
 public class AccountDetailRequestDTO {
 
-    @ApiModelProperty(value = "상점 ID", required = true)
-    private String storeId;
+    @ApiModelProperty(value = "계좌 번호", required = true)
+    private String accountNumber;
 
-    @ApiModelProperty(value = "상점명", required = true)
-    private String storeName;
+    @ApiModelProperty(value = "입출금여부", required = true)
+    private String isDeposit;
 
-    @ApiModelProperty(value = "요청 카테고리", required = true)
-    private Long categoryId;
+    @ApiModelProperty(value = "입금액", required = true)
+    private Long depositAmount;
 
-    @ApiModelProperty(value = "요청 바코드", required = true)
-    private String barcode;
-
-    @ApiModelProperty(value = "적립할 포인트", required = true)
-    private Integer earnPoint;
 
     public AccountDetailRequestDTO() { }
 
-    public AccountDetailRequestDTO( Long categoryId, String barcode, Integer earnPoint) {
-        this.categoryId = categoryId;
-        this.barcode = barcode;
-        this.earnPoint = earnPoint;
+    public AccountDetailRequestDTO( String accountNumber, String isDeposit, Long depositAmount) {
+        this.accountNumber = accountNumber;
+        this.isDeposit = isDeposit;
+        this.depositAmount = depositAmount;
     }
 }

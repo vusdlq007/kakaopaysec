@@ -1,5 +1,6 @@
-package com.kakaopaysec.accountmanagementapi.api.ctr;
+package com.kakaopaysec.accountmanagementapi.api.ctr.exception;
 
+import com.kakaopaysec.accountmanagementapi.api.ctr.UserRestController;
 import com.kakaopaysec.accountmanagementapi.api.dto.UserResponseDTO;
 import com.kakaopaysec.accountmanagementapi.cmm.constant.ResponseCode;
 import lombok.extern.slf4j.Slf4j;

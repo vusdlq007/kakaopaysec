@@ -13,7 +13,7 @@ public interface AccountDetailsRepository extends JpaRepository<AccountDetailVo,
 
     public Optional<AccountDetailVo> findByAccountNumber(String accountNum);
 
-    public List<AccountDetailVo> findAllByAccountNumberAndApprovedAtBetween(String accountNum, LocalDateTime startedAt, LocalDateTime endedAt);
+    public List<AccountDetailVo> findAllByAccountNumberAndCreatedAtBetween(String accountNum, LocalDateTime startedAt, LocalDateTime endedAt);
 
 
 }

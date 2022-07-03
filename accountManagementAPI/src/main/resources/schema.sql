@@ -11,7 +11,8 @@ create table "T_USER"
 create table "T_ACCOUNT"
 (
  "USER_ID" bigint,
- "ACCOUNT_NUMBER" varchar(255)
+ "ACCOUNT_NUMBER" varchar(255),
+ primary key (USER_ID)
 )  AS SELECT * FROM CSVREAD('계좌.csv');
 
 create table "T_ACCOUNT_DETAIL"
