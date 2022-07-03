@@ -18,6 +18,9 @@ public class AccountDetailResponseDTO {
     @ApiModelProperty(value = "사용자 계좌 정보 리스트 페이징 데이터")
     private List<AccountDetailVo> accountDetailList;
 
+    @ApiModelProperty(value = "사용자 계좌 정보 리스트 페이징 데이터2")
+    private Object object;
+
     public AccountDetailResponseDTO() { }
 
     public AccountDetailResponseDTO(Integer resCode, String resMessage) {
@@ -29,6 +32,12 @@ public class AccountDetailResponseDTO {
         this.resCode = resCode;
         this.resMessage = resMessage;
         this.accountDetailList = accountDetailList;
+    }
+
+    public AccountDetailResponseDTO(Integer resCode, String resMessage, Object object) {
+        this.resCode = resCode;
+        this.resMessage = resMessage;
+        this.object = object;
     }
 
 

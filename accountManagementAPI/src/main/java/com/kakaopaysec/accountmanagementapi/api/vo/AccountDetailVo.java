@@ -13,9 +13,10 @@ import java.time.LocalDateTime;
 @Table(name = "T_ACCOUNT_DETAIL")
 public class AccountDetailVo implements Serializable {
 
-//
-//    @EmbeddedId
-//    AccountDetailKey accountDetailKey;
+
+    /**
+     * 해당 테이블의 데이터들의 고유식별을 위해 복합키 구현.
+     */
 
     @Id
     @Column(name = "ACCOUNT_NUMBER")

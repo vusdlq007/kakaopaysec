@@ -15,7 +15,7 @@ public class AccountDTO {
 
     public AccountDTO() { }
 
-    public AccountDTO(String accessType, Long userId, String accountNumber) {
+    public AccountDTO(Long userId, String accountNumber) {
         this.userId = userId;
         this.accountNumber = accountNumber;
     }
