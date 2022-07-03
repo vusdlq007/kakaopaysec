@@ -6,7 +6,12 @@ import com.kakaopaysec.accountmanagementapi.api.svc.AccountService;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.NoSuchElementException;
 
 @Slf4j
 @CrossOrigin("*")
@@ -16,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 })
 @RequestMapping("/api/account")
 @RestController
-public class AcountRestController {
+public class AccountRestController {
 
     @Autowired
     private AccountService accountService;
@@ -35,7 +40,7 @@ public class AcountRestController {
             @ApiResponse(code = 200, message = "API 정상 응답"),
             @ApiResponse(code = 500, message = "서버 에러")
     })
-    @PostMapping("/")
+    @PostMapping("")
     public AccountResponseDTO accountRegist(@RequestBody AccountRequestDTO requestDTO){
 
         return accountService.accountRegist(requestDTO);
@@ -46,15 +51,15 @@ public class AcountRestController {
      * @param
      * @return
      */
-    @ApiOperation(value="계좌 목록 조회", notes="계좌 생성일 기준, 시작일, 종료일을 받아 범위 조회 처리한다.")
+    @ApiOperation(value="계좌 목록 조회", notes="페이징 정보를 받아 조회 처리한다.")
     @ApiResponses({
             @ApiResponse(code = 200, message = "API 정상 응답"),
             @ApiResponse(code = 500, message = "서버 에러")
     })
-    @GetMapping("/")
-    public AccountResponseDTO accountList(@RequestBody AccountRequestDTO requestDTO){
+    @GetMapping("")
+    public AccountResponseDTO accountList(Pageable pageable){
 
-        return accountService.accountList(requestDTO);
+        return accountService.accountList(pageable);
     }
 
     /**
@@ -89,5 +94,10 @@ public class AcountRestController {
         return accountDetailService.accountDetailSearch(requestDTO);
     }
 
+
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<String> handleNoSuchElementFoundException(NoSuchElementException exception) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
 
 }

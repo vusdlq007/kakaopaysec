@@ -7,9 +7,6 @@ import lombok.Data;
 @Data
 public class AccountDetailRequestDTO {
 
-    @ApiModelProperty(value = "요청 타입", dataType = "string")
-    private String accessType;
-
     @ApiModelProperty(value = "상점 ID", required = true)
     private String storeId;
 
@@ -27,8 +24,7 @@ public class AccountDetailRequestDTO {
 
     public AccountDetailRequestDTO() { }
 
-    public AccountDetailRequestDTO(String accessType, Long categoryId, String barcode, Integer earnPoint) {
-        this.accessType = accessType;
+    public AccountDetailRequestDTO( Long categoryId, String barcode, Integer earnPoint) {
         this.categoryId = categoryId;
         this.barcode = barcode;
         this.earnPoint = earnPoint;

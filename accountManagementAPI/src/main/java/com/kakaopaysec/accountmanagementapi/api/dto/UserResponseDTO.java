@@ -1,9 +1,10 @@
 package com.kakaopaysec.accountmanagementapi.api.dto;
 
+import com.kakaopaysec.accountmanagementapi.api.vo.UserVo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 //@AllArgsConstructor
 @Data
@@ -14,20 +15,8 @@ public class UserResponseDTO {
     @ApiModelProperty(value = "응답 메시지", dataType = "string")
     private String resMessage;
 
-    @ApiModelProperty(value = "사용자 ID", required = true)
-    private Integer userId;
-
-    @ApiModelProperty(value = "사용자명", required = true)
-    private String userName;
-
-    @ApiModelProperty(value = "나이", required = true)
-    private Integer age;
-
-    @ApiModelProperty(value = "생성일자", required = true)
-    private LocalDateTime careatedAt;
-
-    @ApiModelProperty(value = "요청 유저정보", required = true)
-    private UserRequestDTO userRequestDTO;
+    @ApiModelProperty(value = "사용자 정보 리스트 페이징 데이터")
+    private List<UserVo> userInfoList;
 
     public UserResponseDTO() { }
 
@@ -36,19 +25,11 @@ public class UserResponseDTO {
         this.resMessage = resMessage;
     }
 
-    public UserResponseDTO(Integer resCode, String resMessage, UserRequestDTO userRequestDTO) {
-        this.resCode = resCode;
-        this.resMessage = resMessage;
-        this.userRequestDTO = userRequestDTO;
-    }
 
-    public UserResponseDTO(Integer resCode, String resMessage, Integer userId, String userName, Integer age, String accessType, LocalDateTime careatedAt) {
+    public UserResponseDTO(Integer resCode, String resMessage, List<UserVo> userInfoList) {
         this.resCode = resCode;
         this.resMessage = resMessage;
-        this.userId = userId;
-        this.userName = userName;
-        this.age = age;
-        this.careatedAt = careatedAt;
+        this.userInfoList = userInfoList;
     }
 
 

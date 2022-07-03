@@ -1,12 +1,14 @@
 package com.kakaopaysec.accountmanagementapi.api.dto;
 
+import com.kakaopaysec.accountmanagementapi.api.vo.UserVo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.List;
 
 //@AllArgsConstructor
 @Data
-public class UserRequestDTO {
+public class UserDTO {
 
     @ApiModelProperty(value = "사용자 ID")
     private Long userId;
@@ -17,12 +19,14 @@ public class UserRequestDTO {
     @ApiModelProperty(value = "나이", required = true)
     private Integer age;
 
+    public UserDTO() { }
 
-    public UserRequestDTO() { }
 
-    public UserRequestDTO(Integer age, Long userId, String userName) {
+    public UserDTO(Long userId, String userName, Integer age) {
         this.userId = userId;
-        this.age = age;
         this.userName = userName;
+        this.age = age;
     }
+    
+
 }

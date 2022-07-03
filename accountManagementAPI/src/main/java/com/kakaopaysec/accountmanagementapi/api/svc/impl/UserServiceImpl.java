@@ -11,13 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -34,15 +34,13 @@ public class UserServiceImpl implements UserService {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
 
-
-
     /**
      * 사용자 정보 추가.
+     *
      * @param requestDTO
      * @return
      */
     @Override
-    @Transactional
     public UserResponseDTO userRegist(UserRequestDTO requestDTO) {
 
         LocalDateTime curTime = LocalDateTime.parse(LocalDateTime.now(ZoneId.of(timeZone)).format(formatter));
@@ -54,31 +52,31 @@ public class UserServiceImpl implements UserService {
         userVo.setAge(requestDTO.getAge());
         userVo.setCreatedAt(curTime);
 
-        try{
-            userRepository.save(userVo);
-        }catch (Exception e){
-            e.printStackTrace();
-            log.error(ResponseCode.USER_REGIST_FAIL.getMessage());
-            return new UserResponseDTO(ResponseCode.USER_REGIST_FAIL.getErrorCode(), ResponseCode.USER_REGIST_FAIL.getMessage());
-        }
 
-        return new UserResponseDTO(ResponseCode.USER_REGIST_SUCCESS.getErrorCode(), ResponseCode.USER_REGIST_SUCCESS.getMessage(), requestDTO);
+        // 기본적으로 Transactional이 동작함.
+        userRepository.save(userVo);
+
+
+        return new UserResponseDTO(ResponseCode.USER_REGIST_SUCCESS.getErrorCode(), ResponseCode.USER_REGIST_SUCCESS.getMessage());
     }
 
     /**
      * 사용자 정보를 모두 조회한다.
-     * @param requestDTO
+     *
+     * @param pageable
      * @return
      */
     @Override
     @Transactional(readOnly = true)
-    public UserResponseDTO userSearch(UserRequestDTO requestDTO) {
-        PageRequest pageRequest = PageRequest.of(0, 5);
+    public UserResponseDTO userSearch(Pageable pageable) {
+
+        PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
+
+        Page<UserVo> userVoPage = null;
+
+        userVoPage = userRepository.findAll(pageRequest);
 
 
-        Page<UserVo> userVoPage = userRepository.findAll(pageRequest);
-
-
-        return null;
+        return new UserResponseDTO(ResponseCode.USER_SEARCH_SUCCESS.getErrorCode(), ResponseCode.USER_SEARCH_SUCCESS.getMessage(), userVoPage.getContent());
     }
 }

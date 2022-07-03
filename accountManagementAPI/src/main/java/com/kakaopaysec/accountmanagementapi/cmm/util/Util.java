@@ -17,4 +17,17 @@ public class Util {
         return Long.parseLong(uuid);
     }
 
+    public static String generateAccountUUID(int n) {
+        // 특정자리수만큼 uuid 생성.
+        Long uuid = generateUUID(n);
+        String accountInt = String.valueOf(uuid.intValue());
+        String forwordStr = accountInt.substring(0,4);
+        String afterStr = accountInt.substring(4);
+
+        StringBuilder strBuilber = new StringBuilder();
+        strBuilber.append(forwordStr).append("-").append(afterStr);
+
+        return strBuilber.toString();
+    }
+
 }

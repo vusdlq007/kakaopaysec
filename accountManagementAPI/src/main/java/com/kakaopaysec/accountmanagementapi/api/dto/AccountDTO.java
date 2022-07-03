@@ -5,8 +5,7 @@ import lombok.Data;
 
 //@AllArgsConstructor
 @Data
-public class AccountRequestDTO {
-
+public class AccountDTO {
 
     @ApiModelProperty(value = "사용자 ID", required = true)
     private Long userId;
@@ -14,11 +13,11 @@ public class AccountRequestDTO {
     @ApiModelProperty(value = "계좌번호", required = true)
     private String accountNumber;
 
+    public AccountDTO() { }
 
-    public AccountRequestDTO() { }
-
-    public AccountRequestDTO( Long userId, String accountNumber) {
+    public AccountDTO(String accessType, Long userId, String accountNumber) {
         this.userId = userId;
         this.accountNumber = accountNumber;
     }
+
 }
